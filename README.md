@@ -23,3 +23,4 @@ web端:
 爬虫端:
 
 根据cookie，算_token 拿数据，存入mysql里
+但凡 cookie一旦失效，向指定用户发短信
