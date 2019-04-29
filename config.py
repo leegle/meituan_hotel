@@ -70,5 +70,5 @@ table = 'xxxxxxx'
 
 tel_num = 'xxxxx'
 
-appid = '26684'
-signature = '40350721c82299f878575fc15b9dc171'
+appid = 'xxxxx'
+signature = 'xxxxxxxx'
