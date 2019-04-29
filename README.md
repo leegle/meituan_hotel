@@ -24,3 +24,14 @@ web端:
 
 根据cookie，算_token 拿数据，存入mysql里
 但凡 cookie一旦失效，向指定用户发短信
+
+### 如何使用
+
+1. 打开web服务
+
+    nohup python3 meituan_web.py &
+
+2. 启动爬虫
+
+    nohup python3 run.py &
+
