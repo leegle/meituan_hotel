@@ -15,6 +15,7 @@ import os
 import random
 import config
 import time
+import datetime
 from call_rescue import send_rescue_msg
 from log_handler import log
 from meituan_spider import receive_cookie_and_start
@@ -39,14 +40,24 @@ def run():
     else:
         log.warning('Cookie目录文件Cookie无效，调用短信接口')
         # 发短信提醒
-        send_rescue_msg()
+        now = int(datetime.datetime.today().strftime('%H'))
+        if now > 8 and now < 21:
+            send_rescue_msg()
+        else:
+            log.debug('休息时间，暂不提醒。')
 
 
 def initial_data_file():
     with open(os.path.abspath(config.ready_2_check_in), 'w', encoding='utf-8') as f:
         f.write('\t'.join(['orderId', 'poiName', 'roomName', 'roomCount', 'guest', 'orderStatus',
                            'paytime', 'paytime_c', 'price', 'realFloorPrice', 'rpInfo', 'checkInDate',
-                           'checkInDate_c', 'checkOutDate', 'checkOutDate_c']) + '\n')
+                           'checkInDate_c', 'checkOutDate', 'checkOutDate_c', 'input_date']) + '\n')
+
+    with open(os.path.abspath(config.current_data), 'w', encoding='utf-8') as f:
+        f.write('\t'.join(['orderId', 'poiName', 'roomName', 'roomCount', 'guest', 'orderStatus',
+                           'paytime', 'paytime_c', 'price', 'realFloorPrice', 'rpInfo', 'checkInDate',
+                           'checkInDate_c', 'checkOutDate', 'checkOutDate_c', 'input_date']) + '\n')
+
 
 
 def schedule():

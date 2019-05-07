@@ -56,6 +56,7 @@ html_record = './Data/html_record.txt'
 
 id_set = './Data/id_set.txt'
 
+current_data = './Data/current_data.csv'
 
 # mysql 配置
 
@@ -64,11 +65,12 @@ user = 'xxxxxx'
 pwd = 'xxxxxx'
 db = 'xxxxxx'
 table = 'xxxxxxx'
+table_s = 'synchronize_with_meituan'
 
 
 # 短信的配置
 
 tel_num = 'xxxxx'
 
-appid = 'xxxxx'
-signature = 'xxxxxxxx'
+appid = 'xxxx'
+signature = 'xxxxxxxxxxxxxxxxxxx'

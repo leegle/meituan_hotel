@@ -128,9 +128,11 @@ def do_parase(js_dict):
         # 离店日期
         checkOutDate = time.strftime('%Y-%m-%d', time.localtime(int(each.get('checkOutDate')/1000)))
         checkOutDate_c = str(each.get('checkOutDate'))
-
+        # 新增
+        # 采集时间
+        input_date = datetime.datetime.today().strftime('%Y-%m-%d %H:%M:%S')
         data.append([orderId, poiName, roomName, roomCount, guest, status, paytime, paytime_c, price,
-                     realFloorPrice, rpInfo, checkInDate, checkInDate_c, checkOutDate, checkOutDate_c])
+                     realFloorPrice, rpInfo, checkInDate, checkInDate_c, checkOutDate, checkOutDate_c, input_date])
     return data
 
 
@@ -149,6 +151,10 @@ def save_data(data):
             # 保存id
             with open(os.path.abspath(config.id_set), 'a', encoding='utf-8') as r:
                 r.write(each[0] + '\n')
+        # 保存current data
+        with open(os.path.abspath(config.current_data), 'a', encoding='utf-8') as f:
+            f.write('\t'.join(each) + '\n')
+
     log.debug('完成数据清洗并写入本地')
 
 
